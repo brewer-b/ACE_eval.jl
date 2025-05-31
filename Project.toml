@@ -1,0 +1,12 @@
+name = "ACE_eval"
+uuid = "d547f78b-dca9-4d44-8eff-fc3e83893bd9"
+authors = ["Brian Brewer <44099384+brewer-b@users.noreply.github.com>"]
+version = "0.1.0"
+
+[deps]
+ACE_eval_jll = "5c98f22e-6f8a-5fbb-be72-8ec561d7abe1"
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[compat]
+ACE_eval_jll = "0.0.1"
+Test = "1.11.0"
