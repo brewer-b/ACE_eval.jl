@@ -19,6 +19,14 @@ const deck = UInt32[ACE_makecard(ACE_index(i)) for i=1:52]
 # Pad 64 bytes after each 7 card hand
 const hands = [zeros(UInt32, 23) for i=1:Threads.nthreads()]
 
+"""
+    hand_rank(a, b, c, d, e, f, g)
+
+Calculates the rank of a 7-card poker hand using ACE_eval (https://github.com/ashelly/ACE_eval).
+
+A larger rank represents a stronger hand.
+
+"""
 @propagate_inbounds function hand_rank(a,b,c,d,e,f,g)
     thread = Threads.threadid()
     hand = hands[thread]
@@ -49,6 +57,11 @@ const categories = [
     "Straight Flush"  
 ]
 
+"""
+    hand_category(rank::UInt32)
+
+Determines the human-readable category of a poker hand from its numerical rank.
+"""
 function hand_category(rank::UInt32)
     cat = rank >> 28
     return categories[cat + 1]
