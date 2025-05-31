@@ -3,6 +3,7 @@ module ACE_eval
 export hand_rank, hand_category
 
 using ACE_eval_jll
+import Base.@propagate_inbounds
 
 ACE_makecard(i) = 1<<(2*(i%13)+6)|1<<(i÷13)
 
