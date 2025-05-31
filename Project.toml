@@ -5,8 +5,10 @@ version = "0.1.0"
 
 [deps]
 ACE_eval_jll = "5c98f22e-6f8a-5fbb-be72-8ec561d7abe1"
+PlayingCards = "a9994b6a-d280-4708-9be4-3391e8077a39"
 Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
 
 [compat]
 ACE_eval_jll = "0.0.1"
+PlayingCards = "0.1.0"
 Test = "1.11.0"

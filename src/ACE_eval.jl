@@ -2,7 +2,7 @@ module ACE_eval
 
 export hand_rank, hand_category
 
-using ACE_eval_jll
+using ACE_eval_jll, PlayingCards
 import Base.@propagate_inbounds
 
 ACE_makecard(i) = 1<<(2*(i%13)+6)|1<<(i÷13)
@@ -32,6 +32,9 @@ const hands = [zeros(UInt32, 23) for i=1:Threads.nthreads()]
     ACE_addcard(hand, deck[g])
     return @ccall libACE_eval.E(hand::Ptr{UInt32})::UInt32
 end
+
+@propagate_inbounds hand_rank(a::Card,b::Card,c::Card,d::Card,e::Card,f::Card,g::Card) =
+                        hand_rank(a.val,b.val,c.val,d.val,e.val,f.val,g.val)
 
 const categories = [
     "High Card",
