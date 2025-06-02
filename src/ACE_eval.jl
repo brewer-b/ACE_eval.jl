@@ -16,9 +16,6 @@ ACE_index(i) = ((i-1) ÷ 4) + ((i-1) % 4) * 13
 
 const deck = UInt32[ACE_makecard(ACE_index(i)) for i=1:52]
 
-# Pad 64 bytes after each 7 card hand
-const hands = [zeros(UInt32, 23) for i=1:Threads.nthreads()]
-
 """
     hand_rank(a, b, c, d, e, f, g)
 
@@ -28,9 +25,7 @@ A larger rank represents a stronger hand.
 
 """
 @propagate_inbounds function hand_rank(a,b,c,d,e,f,g)
-    thread = Threads.threadid()
-    hand = hands[thread]
-    fill!(hand, 0)
+    hand = zeros(UInt32, 7)
     ACE_addcard(hand, deck[a])
     ACE_addcard(hand, deck[b])
     ACE_addcard(hand, deck[c])

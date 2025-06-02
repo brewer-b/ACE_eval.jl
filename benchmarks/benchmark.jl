@@ -11,7 +11,6 @@ function enumerate_all()
                         for f in 1:(e-1)
                             for g in 1:(f-1)
                                 @inbounds strength = hand_rank(a,b,c,d,e,f,g)
-                                num_hands += 1
                             end
                         end
                     end
